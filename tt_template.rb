@@ -6,12 +6,26 @@
 #-------------------------------------------------------------------------------
 
 require 'sketchup.rb'
-require 'TT_Lib2/core.rb'
+begin
+  require 'TT_Lib2/core.rb'
+rescue LoadError => e
+  timer = UI.start_timer( 0, false ) {
+    UI.stop_timer( timer )
+    filename = File.basename( __FILE__ )
+    message = "#{filename} require TT_Lib² to be installed.\n"
+    message << "\n"
+    message << "Would you like to open a webpage where you can download TT_Lib²?"
+    result = UI.messagebox( message, MB_YESNO )
+    if result == 6 # YES
+      UI.openURL( 'http://www.thomthom.net/software/tt_lib2/' )
+    end
+  }
+end
 
-TT::Lib.compatible?('2.6.0', 'Untitled Plugin')
 
 #-------------------------------------------------------------------------------
 
+if defined?( TT::Lib ) && TT::Lib.compatible?( '2.7.0', 'Untitled Plugin' )
 
 module TT::Plugins::Template
   
@@ -19,9 +33,12 @@ module TT::Plugins::Template
   ### CONSTANTS ### ------------------------------------------------------------
   
   # Plugin information
-  ID          = 'TT_Untitled'.freeze
-  VERSION     = TT::Version.new(1,0,0).freeze
-  PLUGIN_NAME = 'Untitled Plugin'.freeze
+  PLUGIN_ID       = 'TT_Untitled'.freeze
+  PLUGIN_NAME     = 'Untitled Plugin'.freeze
+  PLUGIN_VERSION  = TT::Version.new(1,0,0).freeze
+  
+  # Version information
+  RELEASE_DATE    = '21 Oct 12'.freeze
   
   # Resource paths
   PATH_ROOT   = File.dirname( __FILE__ ).freeze
@@ -35,9 +52,9 @@ module TT::Plugins::Template
   
   ### MENU & TOOLBARS ### ------------------------------------------------------
   
-  unless file_loaded?( File.basename(__FILE__) )
+  unless file_loaded?( __FILE__ )
     # Menus
-    #m = TT.menu( 'Plugin' )
+    #m = TT.menu( 'Plugins' )
     #m.add_item( 'Hello World' ) { puts 'Hello World' }
     
     # Context menu
@@ -55,6 +72,20 @@ module TT::Plugins::Template
     #  UI.start_timer( 0.1, false ) { toolbar.restore } # SU bug 2902434
     #end
   end 
+  
+  
+  ### LIB FREDO UPDATER ### ----------------------------------------------------
+  
+  def self.register_plugin_for_LibFredo6
+    {   
+      :name => PLUGIN_NAME,
+      :author => 'thomthom',
+      :version => PLUGIN_VERSION.to_s,
+      :date => RELEASE_DATE,   
+      :description => 'Lorem Ipsum',
+      :link_info => 'http://forums.sketchucation.com/viewtopic.php?f=0&t=0'
+    }
+  end
   
   
   ### MAIN SCRIPT ### ----------------------------------------------------------
@@ -94,10 +125,12 @@ module TT::Plugins::Template
     $VERBOSE = original_verbose
   end
 
-end # module
+end
+
+end # if TT_Lib
 
 #-------------------------------------------------------------------------------
 
-file_loaded( File.basename(__FILE__) )
+file_loaded( __FILE__ )
 
 #-------------------------------------------------------------------------------
