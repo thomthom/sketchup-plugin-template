@@ -106,9 +106,9 @@ module TT::Plugins::Template
   # @example
   #   TT::Plugins::Template.reload
   #
-  # @param [Boolean] tt_lib
+  # @param [Boolean] tt_lib Reloads TT_Lib2 if +true+.
   #
-  # @return [Integer]
+  # @return [Integer] Number of files reloaded.
   # @since 1.0.0
   def self.reload( tt_lib = false )
     original_verbose = $VERBOSE
@@ -117,10 +117,14 @@ module TT::Plugins::Template
     # Core file (this)
     load __FILE__
     # Supporting files
-    x = Dir.glob( File.join(PATH, '*.{rb,rbs}') ).each { |file|
-      load file
-    }
-    x.length
+    if defined?( PATH ) && File.exist?( PATH )
+      x = Dir.glob( File.join(PATH, '*.{rb,rbs}') ).each { |file|
+        load file
+      }
+      x.length + 1
+    else
+      1
+    end
   ensure
     $VERBOSE = original_verbose
   end
