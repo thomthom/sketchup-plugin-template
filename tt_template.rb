@@ -125,7 +125,7 @@ module TT::Plugins::Template
     $VERBOSE = original_verbose
   end
 
-end
+end # module
 
 end # if TT_Lib
 
