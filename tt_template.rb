@@ -41,11 +41,11 @@ module TT::Plugins::Template
   PLUGIN_VERSION  = TT::Version.new(1,0,0).freeze
   
   # Version information
-  RELEASE_DATE    = '21 Oct 12'.freeze
+  RELEASE_DATE    = '14 Feb 13'.freeze
   
   # Resource paths
   PATH_ROOT   = File.dirname( __FILE__ ).freeze
-  PATH        = File.join( PATH_ROOT, 'TT_Plugin' ).freeze
+  PATH        = File.join( PATH_ROOT, PLUGIN_ID ).freeze
   
   
   ### VARIABLES ### ------------------------------------------------------------
@@ -88,7 +88,7 @@ module TT::Plugins::Template
       :version => PLUGIN_VERSION.to_s,
       :date => RELEASE_DATE,   
       :description => 'Lorem Ipsum',
-      :link_info => 'http://forums.sketchucation.com/viewtopic.php?f=0&t=0'
+      :link_info => 'http://sketchucation.com/forums/viewtopic.php?t=0'
     }
   end
   
