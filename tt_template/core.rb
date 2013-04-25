@@ -35,17 +35,7 @@ module TT::Plugins::Template
   
   ### CONSTANTS ### ------------------------------------------------------------
   
-  # Plugin information
-  PLUGIN_ID       = 'TT_Untitled'.freeze
-  PLUGIN_NAME     = 'Untitled Plugin'.freeze
-  PLUGIN_VERSION  = TT::Version.new(1,0,0).freeze
-  
-  # Version information
-  RELEASE_DATE    = '14 Feb 13'.freeze
-  
-  # Resource paths
-  PATH_ROOT   = File.dirname( __FILE__ ).freeze
-  PATH        = File.join( PATH_ROOT, PLUGIN_ID ).freeze
+  FOOBAR = 'bizbaz'.freeze
   
   
   ### VARIABLES ### ------------------------------------------------------------
@@ -75,22 +65,6 @@ module TT::Plugins::Template
     #  UI.start_timer( 0.1, false ) { toolbar.restore } # SU bug 2902434
     #end
   end 
-  
-  
-  ### LIB FREDO UPDATER ### ----------------------------------------------------
-  
-  # @return [Hash]
-  # @since 1.0.0
-  def self.register_plugin_for_LibFredo6
-    {   
-      :name => PLUGIN_NAME,
-      :author => 'thomthom',
-      :version => PLUGIN_VERSION.to_s,
-      :date => RELEASE_DATE,   
-      :description => 'Lorem Ipsum',
-      :link_info => 'http://sketchucation.com/forums/viewtopic.php?t=0'
-    }
-  end
   
   
   ### MAIN SCRIPT ### ----------------------------------------------------------
