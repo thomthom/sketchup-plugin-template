@@ -1,0 +1,1 @@
+Source image files (PSD, SVG), screenshots and videos.
