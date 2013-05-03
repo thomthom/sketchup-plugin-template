@@ -60,7 +60,7 @@ module TT::Plugins::Template
     # Toolbar
     #toolbar = UI::Toolbar.new( PLUGIN_NAME )
     #toolbar.add_item( ... )
-    #if toolbar.get_last_state == TB_VISIBLE
+    #unless toolbar.get_last_state == TB_HIDDEN
     #  toolbar.restore
     #  UI.start_timer( 0.1, false ) { toolbar.restore } # SU bug 2902434
     #end
