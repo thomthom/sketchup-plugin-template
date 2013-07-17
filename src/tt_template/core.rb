@@ -28,35 +28,35 @@ end
 
 #-------------------------------------------------------------------------------
 
-if defined?( TT::Lib ) && TT::Lib.compatible?( '2.7.0', 'Untitled Plugin' )
+if defined?( TT::Lib ) && TT::Lib.compatible?( '2.8.3', 'Untitled Plugin' )
 
 module TT::Plugins::Template
-  
-  
+
+
   ### CONSTANTS ### ------------------------------------------------------------
-  
+
   FOOBAR = 'bizbaz'.freeze
-  
-  
+
+
   ### VARIABLES ### ------------------------------------------------------------
-  
+
   @module_variable = 'Hello World'
-  
-  
+
+
   ### MENU & TOOLBARS ### ------------------------------------------------------
-  
+
   unless file_loaded?( __FILE__ )
     # Menus
     #m = TT.menu( 'Plugins' )
     #m.add_item( 'Hello World' ) { puts 'Hello World' }
-    
+
     # Context menu
     #UI.add_context_menu_handler { |context_menu|
     #  model = Sketchup.active_model
     #  selection = model.selection
     #  # ...
     #}
-    
+
     # Toolbar
     #toolbar = UI::Toolbar.new( PLUGIN_NAME )
     #toolbar.add_item( ... )
@@ -64,11 +64,11 @@ module TT::Plugins::Template
     #  toolbar.restore
     #  UI.start_timer( 0.1, false ) { toolbar.restore } # SU bug 2902434
     #end
-  end 
-  
-  
+  end
+
+
   ### MAIN SCRIPT ### ----------------------------------------------------------
-  
+
   # @param [Object] bar
   #
   # @return [String]
@@ -77,9 +77,9 @@ module TT::Plugins::Template
     bar.to_s
   end
 
-  
+
   ### DEBUG ### ----------------------------------------------------------------
-  
+
   # @note Debug method to reload the plugin.
   #
   # @example
