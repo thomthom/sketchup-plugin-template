@@ -22,7 +22,7 @@ module TT
   PLUGIN_VERSION  = '1.0.0'.freeze
 
   # Resource paths
-  FILENAMESPACE = File.basename( __FILE__, '.rb' )
+  FILENAMESPACE = File.basename( __FILE__, '.*' ).freeze
   PATH_ROOT     = File.dirname( __FILE__ ).freeze
   PATH          = File.join( PATH_ROOT, FILENAMESPACE ).freeze
 
