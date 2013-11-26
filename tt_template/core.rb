@@ -17,6 +17,7 @@ rescue LoadError => e
         :scrollable => false, :resizable => false, :left => 200, :top => 200
       }
       w = UI::WebDialog.new( options )
+      w.allow_actions_from_host( 'www.thomthom.net' )
       w.set_size( 500, 300 )
       w.set_url( "#{url}?plugin=#{File.basename( __FILE__ )}" )
       w.show
@@ -28,7 +29,7 @@ end
 
 #-------------------------------------------------------------------------------
 
-if defined?( TT::Lib ) && TT::Lib.compatible?( '2.7.0', 'Untitled Plugin' )
+if defined?( TT::Lib ) && TT::Lib.compatible?( '2.9.2', 'Untitled Plugin' )
 
 module TT::Plugins::Template
   
