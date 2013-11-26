@@ -1,0 +1,1 @@
+Sample models related to the extension.
